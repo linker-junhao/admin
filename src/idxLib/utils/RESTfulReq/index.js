@@ -1,0 +1,54 @@
+import qs from 'qs'
+import idxAxios from '../Axios'
+
+class RESTfulReq {
+  constructor (reqUrl) {
+    this.reqUrl = reqUrl
+  }
+
+  /**
+   * 请求数据
+   * @param suffixUrl
+   * @param url
+   * @param query
+   * @param callBack
+   */
+  getReq (query, callBack, suffixUrl = '', url = this.reqUrl + suffixUrl) {
+    idxAxios.get(url + '?' + qs.stringify(query))
+      .then(function (response) {
+        callBack(response)
+      })
+  }
+
+  /**
+   * 新建条目
+   */
+  postReq (formData, callBack, suffixUrl = '', url = this.reqUrl + suffixUrl) {
+    idxAxios.post(url, formData)
+      .then(function (response) {
+        callBack(response)
+      })
+  }
+
+  /**
+   * 更新条目
+   */
+  putReq (formData, callBack, suffixUrl = '', url = this.reqUrl + suffixUrl) {
+    idxAxios.put(url, formData)
+      .then(function (response) {
+        callBack(response)
+      })
+  }
+
+  /**
+   * 删除条目
+   */
+  deleteReq (query, callBack, suffixUrl = '', url = this.reqUrl + suffixUrl) {
+    idxAxios.delete(url + '?' + qs.stringify(query))
+      .then(function (response) {
+        callBack(response)
+      })
+  }
+}
+
+export default RESTfulReq

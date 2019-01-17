@@ -37,3 +37,6 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 项目描述
+基于vue、element-ui的CMS系统后台管理
