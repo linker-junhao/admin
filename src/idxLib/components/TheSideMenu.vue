@@ -7,7 +7,7 @@
            :collapse="!isCollapse" :style="{ top: fixedTop + 'px' }">
     <el-menu-item index="/">
       <i class="el-icon-menu"></i>
-      <span slot="title">示例</span>
+      <span slot="title">首页</span>
     </el-menu-item>
     <el-menu-item index="/Login">
       <i class="el-icon-menu"></i>
@@ -18,9 +18,7 @@
         <i class="el-icon-location"></i>
         <span slot="title">功能</span>
       </template>
-      <el-menu-item index="TabResetPassword">学生密码重置</el-menu-item>
-      <el-menu-item index="TokenTransferManage">校级授权管理</el-menu-item>
-      <el-menu-item index="AppCollectionManage">应用集管理</el-menu-item>
+      <el-menu-item index="About">About</el-menu-item>
     </el-submenu>
 
     <el-submenu index="3" disabled>
