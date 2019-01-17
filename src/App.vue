@@ -19,5 +19,34 @@
   </el-container>
 </template>
 
-<style>
+<script>
+import TheFooter from '@/idxLib/components/TheFooter'
+import TheHeader from '@/idxLib/components/TheHeader'
+import TheSideMenu from '@/idxLib/components/TheSideMenu'
+
+export default {
+  components: {
+    TheFooter,
+    TheHeader,
+    TheSideMenu
+  },
+  beforeMount: function () {
+
+  },
+  data: function () {
+    return {}
+  },
+  computed: {},
+  created () {
+  },
+  mounted () {
+  },
+  methods: {}
+}
+</script>
+<style scoped>
+  .el-header {
+    height: auto !important;
+    margin-bottom: 12px;
+  }
 </style>

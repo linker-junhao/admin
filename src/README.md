@@ -10,10 +10,15 @@
 ### idxLib
 我们自己开发的一些可复用组件和工具，俗称轮子
  * /components 可复用组件，详情看该文件下的readme.md
+ * /router 可复用的路由表
  * /utils 工具库，详情看该文件下的readme.md
+ * /views 可复用的视图
 
-### router
+### router.js
 本项目的路由
+
+### store.js
+vuex
 
 ### main.js 
 vue页面的起点
