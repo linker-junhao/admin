@@ -2,12 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import idxRouterTable from '@/idxLib/router/RouterTable'
 import Home from './views/Home.vue'
-import ArticleList from './views/ArticleList.vue'
-import PageHeaderList from './views/PageHeaderList.vue'
-import MenuList from './views/MenuList.vue'
-import CarouselList from './views/CarouselList.vue'
-import PageFooterList from './views/PageFooterList.vue'
-import AdminList from './views/AdminList.vue'
+import Article from './views/Article.vue'
+import PageHeader from './views/PageHeader.vue'
+import Menu from './views/Menu.vue'
+import Carousel from './views/Carousel.vue'
+import PageFooter from './views/PageFooter.vue'
+import Admin from './views/Administrator.vue'
 import AdminPassChange from './views/AdminPassChange.vue'
 import SysAccessLog from './views/SysAccessLog.vue'
 
@@ -20,34 +20,34 @@ let routers = [
     component: Home
   },
   {
-    path: '/ArticleList',
-    name: 'articleList',
-    component: ArticleList
+    path: '/Article',
+    name: 'article',
+    component: Article
   },
   {
-    path: '/PageHeaderList',
-    name: 'pageHeaderList',
-    component: PageHeaderList
+    path: '/PageHeader',
+    name: 'pageHeader',
+    component: PageHeader
   },
   {
-    path: '/MenuList',
-    name: 'menuList',
-    component: MenuList
+    path: '/Menu',
+    name: 'menu',
+    component: Menu
   },
   {
-    path: '/CarouselList',
-    name: 'carouselList',
-    component: CarouselList
+    path: '/Carousel',
+    name: 'carousel',
+    component: Carousel
   },
   {
-    path: '/PageFooterList',
-    name: 'pageFooterList',
-    component: PageFooterList
+    path: '/PageFooter',
+    name: 'pageFooter',
+    component: PageFooter
   },
   {
-    path: '/AdminList',
-    name: 'adminList',
-    component: AdminList
+    path: '/Admin',
+    name: 'admin',
+    component: Admin
   },
   {
     path: '/AdminPassChange',
