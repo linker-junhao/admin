@@ -2,32 +2,33 @@
     <div>
         <el-row>
             <el-col :span="23" style="text-align: right">
+              <!--建立一个插槽供父组件补充，并将查询数据对象暴露在scope的data中-->
                 <slot name="tableOperateHeader" :data="operateHeader"></slot>
             </el-col>
             <el-col :span="1" v-show="$scopedSlots.tableOperateHeader">
                 <el-button icon="el-icon-search" circle @click="searchQuery()"></el-button>
             </el-col>
         </el-row>
-        <el-table
-                v-loading="tableOptions.loading"
-                :data="tableOptions.tableData"
-                border
-                style="width: 100%"
-                @selection-change="handleSelectionChange">
+        <el-table v-loading="tableOptions.loading" :data="tableOptions.tableData" border style="width: 100%" @selection-change="handleSelectionChange">
             <el-table-column
                     type="selection"
                     width="40">
             </el-table-column>
 
+            <!--根据tableOptions.columns构建渲染表格列-->
             <el-table-column v-for="(col, index) in tableOptions.columns"
                              :key=index
                              :prop=col.prop
                              :label=col.label
                              :width=col.width>
                 <template slot-scope="scope">
-                    <span v-if="col.contentExpress === undefined">
+                  <!--判定是否有根据值自定义内容表达的方法-->
+                    <span v-if="col.contentExpress === undefined && !col.dangerouslyUseHTMLString">
                         {{ scope.row[col.prop] }}
                     </span>
+                    <span v-else-if="col.contentExpress === undefined && col.dangerouslyUseHTMLString" v-html="scope.row[col.prop]" >
+                    </span>
+                  <!--如果有自定义表达方法，判定是以html还是纯粹字符来展示-->
                     <span v-else-if="!col.dangerouslyUseHTMLString">
                       {{ handleContentExp(scope.row[col.prop], col.contentExpress) }}
                     </span>
@@ -35,10 +36,16 @@
                 </template>
             </el-table-column>
         </el-table>
+
+      <!--使用翻页组件-->
         <the-table-pagination :paginationOptions="thePaginationOpt"></the-table-pagination>
+
+      <!--使用侧边操作组件-->
         <the-patch-deal :patchOptions="patchDeal"></the-patch-deal>
 
+      <!--编辑操作对话款-->
         <el-dialog title="编辑" :visible.sync="editBox.visible" :width="$attrs.editBoxOpts.width ? $attrs.editBoxOpts.width : '30%'">
+          <!--建立一个插槽供父组件补充，并将编辑操作的数据对像暴露到scope的data中-->
             <slot name="editForm" :data="tableOptions.editData"></slot>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="editBox.visible = false">取 消</el-button>
@@ -46,8 +53,11 @@
             </div>
         </el-dialog>
 
+      <!--新建操作对话框-->
         <el-dialog title="新建" :visible.sync="newOneBox.visible" :width="$attrs.newOneBoxOpts.width ? $attrs.newOneBoxOpts.width : '30%'">
-            <slot name="newOneForm" :data="tableOptions.newOneData"></slot>
+
+          <!--建立一个插槽供父组件补充，并将新建操作的数据对像暴露到scope的data中-->
+          <slot name="newOneForm" :data="tableOptions.newOneData"></slot>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="newOneBox.visible = false">取 消</el-button>
                 <el-button type="primary" @click="newOneReq()">确 认</el-button>

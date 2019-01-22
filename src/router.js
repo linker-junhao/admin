@@ -3,14 +3,10 @@ import Router from 'vue-router'
 import idxRouterTable from '@/idxLib/router/RouterTable'
 import Home from './views/Home.vue'
 import ArticleList from './views/ArticleList.vue'
-import NewArticle from './views/NewArticle.vue'
 import PageHeaderList from './views/PageHeaderList.vue'
-import NewPageHeader from './views/NewPageHeader.vue'
 import MenuList from './views/MenuList.vue'
-import NewMenu from './views/NewMenu.vue'
 import CarouselList from './views/CarouselList.vue'
 import PageFooterList from './views/PageFooterList.vue'
-import NewPageFooter from './views/NewPageFooter.vue'
 import AdminList from './views/AdminList.vue'
 import AdminPassChange from './views/AdminPassChange.vue'
 import SysAccessLog from './views/SysAccessLog.vue'
@@ -29,29 +25,14 @@ let routers = [
     component: ArticleList
   },
   {
-    path: '/NewArticle',
-    name: 'newArticle',
-    component: NewArticle
-  },
-  {
     path: '/PageHeaderList',
     name: 'pageHeaderList',
     component: PageHeaderList
   },
   {
-    path: '/NewPageHeader',
-    name: 'newPageHeader',
-    component: NewPageHeader
-  },
-  {
     path: '/MenuList',
     name: 'menuList',
     component: MenuList
-  },
-  {
-    path: '/NewMenu',
-    name: 'newMenu',
-    component: NewMenu
   },
   {
     path: '/CarouselList',
@@ -62,11 +43,6 @@ let routers = [
     path: '/PageFooterList',
     name: 'pageFooterList',
     component: PageFooterList
-  },
-  {
-    path: '/NewPageFooter',
-    name: 'newPageFooter',
-    component: NewPageFooter
   },
   {
     path: '/AdminList',

@@ -6,6 +6,8 @@
       :editBoxOpts="{width: '100%'}"
       :newOneBoxOpts="{width: '100%'}"
       :ops="['edit', 'delete', 'newOne', 'refresh', 'enable', 'disable']">
+
+      <!--管理表格顶部查询栏-->
       <template slot="tableOperateHeader" slot-scope="scope">
         <el-form :inline="true" :model="scope.data" class="demo-form-inline" @submit.native.prevent>
           <el-form-item label="标题">
@@ -32,6 +34,7 @@
         </el-form>
       </template>
 
+      <!--管理表格编辑操作框内容，使用具名插槽实现-->
       <template slot="editForm" slot-scope="scope">
         <el-form :model="scope.data">
           <el-row :gutter="24">
@@ -106,6 +109,7 @@
         </el-form>
       </template>
 
+      <!--管理表格新建操作框内容，使用具名插槽实现-->
       <template slot="newOneForm" slot-scope="scope">
         <el-form :model="scope.data">
           <el-row :gutter="24">
@@ -184,13 +188,16 @@
 </template>
 
 <script>
-// require styles
+// 引入quill editor编辑器样式
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
+// 引入管理表格组件
 import TheManageTable from '@/idxLib/components/TheManageTable'
+// 引入quill editor 组件
 import { quillEditor } from 'vue-quill-editor'
+// 引入quill editor 配置
 import idxRichTextEditorCfg from '@/idxLib/utils/QuillEditor/options'
 //
 // import {ImageDrop} from 'quill-image-drop-module'
@@ -203,27 +210,29 @@ import idxRichTextEditorCfg from '@/idxLib/utils/QuillEditor/options'
 
 export default {
   name: 'ArticleList',
+  // 将组件挂载
   components: {
     TheManageTable,
     quillEditor
   },
+  // vue 组件生命周期的mounted段
   mounted: function () {
   },
+  // vue 组件生命周期的beforeMount段
   beforeMount: function () {
   },
+  // 本组件方法
   methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
-    },
+    // 文章略缩图上传成功后的处理，与element-ui中的upload配合使用
     handleAvatarSuccess (res, file, scope) {
       if (res.status) {
+        // 判断状态并赋值
         scope.data.thumb_img = res.data.url
       }
     },
+    // 文章略缩图上传成功前的处理，与element-ui中的upload配合使用
     beforeAvatarUpload (file) {
+      // 检测文件是否符合规定
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
       if (!isJPG) {
@@ -238,9 +247,11 @@ export default {
   data: function () {
     let thisView = this
     return {
+      // quill editor 编辑器的配置文件
       quillEditor: {
         editorOption: idxRichTextEditorCfg
       },
+      // 管理表格的列属性定义，具体使用看idxLib中的readme
       manageTableColumns: [
         {
           prop: 'title',
@@ -286,9 +297,11 @@ export default {
           width: '180'
         }
       ],
+      // 配置表格绑定到的api
       manageTableOpts: {
         srcUrl: '/admin/article'
       },
+      // 编辑器宽度滑块绑定值
       qlEditorSliderVal: 100
     }
   },
