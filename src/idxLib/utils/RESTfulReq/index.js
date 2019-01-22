@@ -1,9 +1,10 @@
 import qs from 'qs'
-import idxAxios from '../Axios'
+import { Axios as idxAxios } from '../Axios'
 
 class RESTfulReq {
-  constructor (reqUrl) {
+  constructor (reqUrl, theTab) {
     this.reqUrl = reqUrl
+    this.tab = theTab
   }
 
   /**

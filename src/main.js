@@ -11,7 +11,7 @@ import idxAxios from '@/idxLib/utils/Axios'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import * as FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(ElementUI)
 Vue.use(idxAxios)

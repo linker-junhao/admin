@@ -142,6 +142,6 @@ export default {
     }
 
     .el-button {
-        margin: 10px 0 0;
+        margin: 10px 0 0 0!important;
     }
 </style>

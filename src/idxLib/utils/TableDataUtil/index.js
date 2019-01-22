@@ -52,7 +52,6 @@ class TableDataUtil {
    */
   changeColumnValue (columnName, newVal, tableData = this.targetData) {
     tableData.forEach(function (item, index, array) {
-      console.log(item, index)
       array[index][columnName] = newVal
     })
     return tableData

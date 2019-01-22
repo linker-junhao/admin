@@ -28,16 +28,17 @@
                     <span v-if="col.contentExpress === undefined">
                         {{ scope.row[col.prop] }}
                     </span>
-                    <span v-else>
-                        {{ handleContentExp(scope.row[col.prop], col.contentExpress) }}
+                    <span v-else-if="!col.dangerouslyUseHTMLString">
+                      {{ handleContentExp(scope.row[col.prop], col.contentExpress) }}
                     </span>
+                    <span v-else v-html="handleContentExp(scope.row[col.prop], col.contentExpress)"></span>
                 </template>
             </el-table-column>
         </el-table>
         <the-table-pagination :paginationOptions="thePaginationOpt"></the-table-pagination>
         <the-patch-deal :patchOptions="patchDeal"></the-patch-deal>
 
-        <el-dialog title="编辑" :visible.sync="editBox.visible" width="30%">
+        <el-dialog title="编辑" :visible.sync="editBox.visible" :width="$attrs.editBoxOpts.width ? $attrs.editBoxOpts.width : '30%'">
             <slot name="editForm" :data="tableOptions.editData"></slot>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="editBox.visible = false">取 消</el-button>
@@ -45,7 +46,7 @@
             </div>
         </el-dialog>
 
-        <el-dialog title="新建" :visible.sync="newOneBox.visible" width="30%">
+        <el-dialog title="新建" :visible.sync="newOneBox.visible" :width="$attrs.newOneBoxOpts.width ? $attrs.newOneBoxOpts.width : '30%'">
             <slot name="newOneForm" :data="tableOptions.newOneData"></slot>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="newOneBox.visible = false">取 消</el-button>
@@ -128,14 +129,14 @@ export default {
           enable: function (e) {
             if (this.checkSelected()) {
               let tableDataUtil = new TableDataUtil(theTab.tableOptions.tableSelected)
-              theTab.tableOptions.tableSelected = tableDataUtil.changeColumnValue('enable', '1')
+              theTab.tableOptions.tableSelected = tableDataUtil.changeColumnValue('status', '1')
               theTab.modifyReq(theTab.tableOptions.tableSelected)
             }
           },
           disable: function (e) {
             if (this.checkSelected()) {
               let tableDataUtil = new TableDataUtil(theTab.tableOptions.tableSelected)
-              theTab.tableOptions.tableSelected = tableDataUtil.changeColumnValue('enable', '0')
+              theTab.tableOptions.tableSelected = tableDataUtil.changeColumnValue('status', '0')
               theTab.modifyReq(theTab.tableOptions.tableSelected)
             }
           },
