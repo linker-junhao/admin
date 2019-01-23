@@ -10,8 +10,8 @@
         <i class="el-icon-document"></i>
         <span>文章管理</span>
       </template>
-      <el-menu-item index="/ArticleList">文章列表</el-menu-item>
-      <el-menu-item index="/ArticleTypeList">文章类别</el-menu-item>
+      <el-menu-item index="/Article">文章列表</el-menu-item>
+      <el-menu-item index="/ArticleType">文章类别</el-menu-item>
     </el-submenu>
     <el-menu-item index="" @click="openFileManager">
       <i class="el-icon-picture"></i>
@@ -22,10 +22,10 @@
         <i class="el-icon-menu"></i>
         <span slot="title">页面组件管理</span>
       </template>
-        <el-menu-item index="/PageHeaderList">头部</el-menu-item>
-        <el-menu-item index="/MenuList">菜单</el-menu-item>
-        <el-menu-item index="/CarouselList">轮播</el-menu-item>
-        <el-menu-item index="/PageFooterList">尾部</el-menu-item>
+        <el-menu-item index="/PageHeader">头部</el-menu-item>
+        <el-menu-item index="/Menu">菜单</el-menu-item>
+        <el-menu-item index="/Carousel">轮播</el-menu-item>
+        <el-menu-item index="/PageFooter">尾部</el-menu-item>
     </el-submenu>
 
     <el-submenu index="3">
@@ -35,7 +35,7 @@
       </template>
       <el-submenu index="3-1">
         <span slot="title">管理员管理</span>
-        <el-menu-item index="/AdminList">管理员列表</el-menu-item>
+        <el-menu-item index="/Admin">管理员列表</el-menu-item>
       </el-submenu>
       <el-menu-item index="/AdminPassChange">修改密码</el-menu-item>
       <el-menu-item index="" @click="logOut">注销</el-menu-item>

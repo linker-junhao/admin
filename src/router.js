@@ -7,7 +7,7 @@ import PageHeader from './views/PageHeader.vue'
 import Menu from './views/Menu.vue'
 import Carousel from './views/Carousel.vue'
 import PageFooter from './views/PageFooter.vue'
-import Admin from './views/Administrator.vue'
+import Administrator from './views/Administrator.vue'
 import AdminPassChange from './views/AdminPassChange.vue'
 import SysAccessLog from './views/SysAccessLog.vue'
 
@@ -45,9 +45,9 @@ let routers = [
     component: PageFooter
   },
   {
-    path: '/Admin',
-    name: 'admin',
-    component: Admin
+    path: '/Administrator',
+    name: 'administrator',
+    component: Administrator
   },
   {
     path: '/AdminPassChange',
